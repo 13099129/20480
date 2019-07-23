@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <ul>
+        <li><label for="testscore">Enter Score:</label>
+        <input type="text" id="testscore" />
+        </li>
+        <li><span id="letterGrade"></span></li>
+        <li><input type="button" value="Grade the test"
+                   onclick="gradeTheTest()" /></li>
+    </ul>
+
+    <script type="text/javascript">
+
+        //let x = 10.5;
+        //let y = "blue" / 5;//NaN
+        //let z = `Matt Twomey likes the number "${x}" `;
+        //let compoundstring = "matt Twomey like the number " + x;
+        //let a = false;//or true
+        //typeof (x);//undefined, number, boolean, string, object, function
+
+
+        function gradeTheTest() {
+            let x = document.getElementById("testscore").value;
+            x = parseInt(x);
+            let y = getLetter(x);
+            document.getElementById("letterGrade").innerText = y;
+        }
+
+        function getLetter(score) {
+            let letter = "F";
+            if (score >= 90) {
+                letter = "A";
+            }
+            else if (score >= 80) {
+                letter = "B";
+            }
+            else if (score >= 70) {
+                letter = "C";
+            }
+            else {
+                letter = "D";
+            }
+            return letter;
+        }
+
+    </script>
+</body>
+</html>

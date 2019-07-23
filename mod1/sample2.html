@@ -1,0 +1,50 @@
+<html>
+<head>
+<style type="text/css" rel="stylesheet">
+
+label{
+	font-family:Arial;
+}
+
+p a{
+background-color:yellow;
+}
+
+
+</style>
+</head>
+<body>
+
+<h1>h 1 tag</h1>
+<h2>h 2      tag</h2>
+<img src="april-meyer.jpg"/>
+<p>for April's resume click <a href="sample1.html">here</a></p>
+
+
+<form action="signup.html" method="get">
+<label for="fname">First Name:</label>
+<input type="text" name="fn" id="fname"/>
+<label for="lname">Last Name:</label>
+<input type="text" name="ln" id="lname"/>
+
+<label>State:</label>
+<select name="state">
+<option>AZ</option>
+<option>FL</option>
+<option>MI</option>
+</select>
+
+<input type="submit" value="Signup" >
+</form>
+
+
+<input type="button" onclick="runcode()" value="run code"/>
+
+<script>
+	function runcode(){
+		alert("Hello");
+	}
+</script>
+</body>
+
+</html>
