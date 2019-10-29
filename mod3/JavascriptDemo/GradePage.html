@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript">
+
+        function runTestGrade() {
+            let elts = document.getElementById("testScore");
+            let score = parseFloat(elts.value);
+            let grade = GetGrade(score);
+            document.getElementById("testGrade").value = grade;
+        }
+
+        function GetGrade(score) {
+            let result = "A";
+            if (score >= 90) {
+                result = "A";
+            }
+            else if (score >= 80) {
+                result = "B";
+            }
+            else if (score >= 70) {
+                result = "C";
+            }
+            else {
+                result = "D";
+            }
+            return result;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        Test Score:
+        <input type="text" id="testScore" />
+    </div>
+    <div>
+        Test Grade:
+        <input type="text" id="testGrade" />
+    </div>
+    <input type="button" value="Grade Test" onclick="runTestGrade()" />
+
+</body>
+</html>
