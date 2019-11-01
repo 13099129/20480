@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script>
+
+
+        async function getAllData() {
+            let result1 = await getDeltaData();
+            let result2 = await getSpiritData();
+            let restul3 = await getSWData();
+            updateinterface();
+        }
+
+
+        function getData(url) {
+            return "";
+        }
+        function parseCourseList(data) {
+            return [{}, {}];
+        }
+
+        function updateInterface(arrayOfClasses) {
+            //updates the iterface
+        }
+
+        function getCourses() {
+            let req = new XMLHttpRequest();
+
+            req.open("get", "courselist.html");
+            req.onreadystatechange = ()=> {
+                if (req.readyState == 4 && req.status == "200") {
+
+                    let list = JSON.parse(req.responseText);
+                    for (let i = 0; i < list.length; i++) {
+                        document.getElementById("data").innerHTML +=
+                            `${list[i].name} credits:${list[i].credits}<br/>`;
+                    }
+                    
+                        
+                }
+            };
+            req.send();
+
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <input type="button" onclick="getCourses()" value="get courses" />
+    <div id="data">
+        ...
+    </div>
+
+
+</body>
+</html>

@@ -3,51 +3,45 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <script type="text/javascript">
+        
+        function calc() {
+            let n1 = document.getElementById("num1");
+            let value1 = parseInt(n1.value);
+            let value2 = parseInt(document.getElementById("num2").value);
+            let value3 = AddNumbers(value1, value2);
+            window.document.getElementById("num3").value = value3;
+        }
+        
+        function AddNumbers(x,y) {
+            return x + y;
+        }
+
+
+
+    </script>
 </head>
 <body>
 
-    <ul>
-        <li><label for="testscore">Enter Score:</label>
-        <input type="text" id="testscore" />
-        </li>
-        <li><span id="letterGrade"></span></li>
-        <li><input type="button" value="Grade the test"
-                   onclick="gradeTheTest()" /></li>
-    </ul>
-
-    <script type="text/javascript">
-
-        //let x = 10.5;
-        //let y = "blue" / 5;//NaN
-        //let z = `Matt Twomey likes the number "${x}" `;
-        //let compoundstring = "matt Twomey like the number " + x;
-        //let a = false;//or true
-        //typeof (x);//undefined, number, boolean, string, object, function
+    <input type="text" id="num1" />
+    <input type="text" id="num2" />
+    <input type="text" id="num3" />
+    <input type="button" value="Add Numbers" onclick="calc();"/>
 
 
-        function gradeTheTest() {
-            let x = document.getElementById("testscore").value;
-            x = parseInt(x);
-            let y = getLetter(x);
-            document.getElementById("letterGrade").innerText = y;
-        }
+    <form name="frm1" id="frm1">
+        <input type="text" id="fnum1" />
+        <input type="text" id="fnum2" />
+        <input type="text" id="fnum3" />
+        <input type="button" value="Add Numbers" onclick="createCalendar();" />
+    </form>
+    <textarea id="results">
 
-        function getLetter(score) {
-            let letter = "F";
-            if (score >= 90) {
-                letter = "A";
-            }
-            else if (score >= 80) {
-                letter = "B";
-            }
-            else if (score >= 70) {
-                letter = "C";
-            }
-            else {
-                letter = "D";
-            }
-            return letter;
-        }
+</textarea>
+
+
+    <!--elements-->
+    <script>
 
     </script>
 </body>

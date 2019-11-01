@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    
+
+
+</head>
+<body>
+    <div id="timer"></div>
+    <input type="button" onclick="GetCourses()" value="Get Course Data" />
+    <br />    <input type="button" onclick="GetWithPromises()" value="GetWithPromises" />
+    <div id="data">
+        ...
+    </div>
+
+
+    <script>
+
+        function GetCourses() {
+            let req = new XMLHttpRequest();
+            req.open("GET", "courselist.html");
+            req.onreadystatechange = () => {
+                if (req.readyState == 4) {
+                    let raw = req.responseText;
+
+                    document.getElementById("data").innerText = raw;
+                }
+            };
+            req.send();
+        }
+
+        function GetRawCourseData() {
+            let req = new XMLHttpRequest();
+            req.open("GET", "courselist.html");
+            req.onreadystatechange = () => {
+                if (req.readyState == 4) {
+                    if (req.status == "200") {
+                        let raw = req.responseText;
+                        return raw;
+                    } else {
+                        return "error";
+                    }
+
+                }
+            };
+            req.send();
+        }
+
+        function GetWithPromises() {
+            let p1 = new Promise(function (ok, bad) {
+                let req = new XMLHttpRequest();
+                req.open("GET", "courselist.html");
+                req.onreadystatechange = () => {
+                    if (req.readyState == 4) {
+                        if (req.status == "200") {
+                            let raw = req.responseText;
+                            ok(raw);
+                        } else {
+                            return "error";
+                        }
+
+                    }
+                };
+                req.send();
+
+
+
+            });
+            
+            p1.then(function (data) {
+                return JSON.parse(data);
+            })
+            .then(function (list) {
+                let el = document.getElementById("data");
+                let ol = document.createElement("ol");
+                el.appendChild(ol);
+                for (let i = 0; i < list.length; i++) {
+                    let li = document.createElement("li");
+                    li.innerText = list[i].name;
+                    ol.appendChild(li);
+                }
+                });
+           
+        }
+
+       
+
+
+        function RunTimer() {
+            let d = new Date();
+            document.getElementById("timer").innerText = d.toTimeString();
+            window.setTimeout(RunTimer, 100);
+        }
+        window.setTimeout(RunTimer, 100);
+
+    </script>
+</body>
+</html>
